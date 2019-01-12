@@ -3,7 +3,7 @@ const { dialogflow } = require('actions-on-google');
 
 const app = dialogflow();
 
-app.intent('nextIntent', conv => {
+app.intent('startRoute', conv => {
     
     conv.close('CLASSNAV');
 });
