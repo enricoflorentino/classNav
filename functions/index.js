@@ -7,6 +7,9 @@ const app = dialogflow();
 // global variable to store desired room throughout destination
 global.room = 1000;
 
+app.intent('startRoute0', conv => {
+    conv.ask('Ok! Your class is in the basement, tell me your exact room number');
+})
 app.intent('startRoute1', conv => {
      conv.ask(`Ok! Your class is on floor 1, tell me your exact room number.`)
 });
@@ -25,6 +28,26 @@ app.intent(`startRoute4`, conv => {
 
 app.intent(`startRoute5`, conv => {
     conv.ask(`Ok! Your class is on floor 5, tell me your exact room number.`)
+});
+
+app.intent('zerothFloor', (conv, {number}) => {
+    global.room = number;
+    if (number < 1000) {
+        conv.ask(`Walk straight down the stairs in front of you leading to the lower level, proceed for two flights. Let me
+        know when you've reach the bottom.`);
+    }
+});
+
+app.intent('zerothFloorFollowUp', conv => {
+    if (global.room == 60 || global.room == 64) {
+        conv.close(`${global.room} should just be up ahead.`);
+    } else if (global.room == 50) {
+        conv.close(`${global.room} should just be up ahead, slightly to the right.`);
+    } else if (global.room == 40 || global.room == 20 || global.room == 32 || global.room == 34 || global.room == 36) {
+        conv.close(`Turn right and ${global.room} should be against the wall up ahead`);
+    } else {
+        conv.close(`Turn right and ${global.room} should be against the wall up ahead`);
+    }
 });
 
 app.intent('firstFloor', (conv, {number}) => {
