@@ -6,30 +6,41 @@ const app = dialogflow();
 // global variable to store desired room throughout destination
 global.room = 1000;
 
-app.intent('startRoute', conv => {
+app.intent('startRoute1', conv => {
+     conv.ask(`Ok! Your class is on floor 1, tell me your exact room number.`)
+});
 
+app.intent(`startRoute2`, conv => {
+    conv.ask(`Ok! Your class is on floor 2, tell me your exact room number.`)
+});
+
+app.intent(`startRoute3`, conv => {
+    conv.ask(`Ok! Your class is on floor 3, tell me your exact room number.`)
+});
+
+app.intent(`startRoute4`, conv => {
+    conv.ask(`Ok! Your class is on floor 4, tell me your exact room number.`)
+});
+
+app.intent(`startRoute5`, conv => {
+    conv.ask(`Ok! Your class is on floor 5, tell me your exact room number.`)
+});
+
+app.intent('firstFloor', (conv, {number}) => {
     // number arg is the desired room #
-    /*
     global.room = number;
     if (number/1000 < 2) {
         // first floor
         if (number == 1012) {
-            conv.close(`Walk slightly to the right, room ${number} is up ahead.`);
+            conv.close(`Ok! Walk slightly to the right, room ${number} is up ahead.`);
         } else {
-            conv.ask("Walk past the stairs that are ahead of you. Let me know when you're there.");    
+            conv.ask("Ok! Walk past the stairs that are ahead of you. Let me know when you're there.");    
         }
         
     } 
-    */
-     conv.close(`LETS GO TO FLOOR 1`)
 });
 
-app.intent(`startRoute2`, conv => {
-    conv.close(`LETS GO TO FLOOR 2`)
-});
-
-
-app.intent('firstFloor', conv => {
+app.intent('firstFloorFollowUp', conv => {
     if (global.room == 1013) {
         conv.close(`Room ${global.room} is to your right before the slight turn in the hall.`)
     }
@@ -44,7 +55,7 @@ app.intent('firstFloor', conv => {
     }
 });
 
-app.intent('firstFloorFollowUp', conv => {
+app.intent('firstFloorFollowUp2', conv => {
     if (global.room == 1829 || global.room == 1907) {
         conv.close(`Walk all the way to the end of the hall. Room ${global.room} is to your left.`)
     }
@@ -63,5 +74,10 @@ app.intent('firstFloorFollowUp', conv => {
     else {
         conv.close(`Take the left after the end of the hall. Room ${global.room} is to your right after the door.`)
     }
-})
+});
+
+app.intent(`secondFloor`, (conv, {number}) => {
+    conv.close(`Ok! Room ${number}`)
+});
+
 exports.mybackend = functions.https.onRequest(app);
