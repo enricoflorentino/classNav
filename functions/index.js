@@ -86,7 +86,14 @@ app.intent(`secondFloor`, (conv, {number}) => {
 });
 
 app.intent(`secondFloorFollowUp`, conv => {
-    conv.close(`After the door, turn left then right and go straight down the hallway. Let me know when you've done so.`)
+    if (global.room == 2903 || global.room ==  2902) {
+        conv.close(`After the door, turn left then right then the first left is where ${global.room}`);
+    } else if(global.room == 2062 || global.room == 2066 || global.room == 2058 || global.room == 2002) {
+        conv.ask(`After the door, turn left then right and go straight down the hallway. Let me know when you've done so.`)
+    } else {
+        conv.ask(`After the door, turn right onto the long stretched hallway and let me know when you reach the end of it.`);
+    }
+    
 });
 
 app.intent(`secondFloorFollowUp2`, conv => {
@@ -97,6 +104,15 @@ app.intent(`secondFloorFollowUp2`, conv => {
     else if (global.room == 2058 || global.room == 2002) {
         conv.close(`Near the end of the hall past the high tables on your left, take the last right to a hallway. Room
         ${global.room} is to your close left.`)
+    } else if (global.room == 2031) {
+        conv.close(`${global.room} is just to your left.`);
+    } else if (global.room >= 2018 && global.room <= 2026) {
+        conv.close(`Enter the room to your left, and your ${global.room} is on your left.`);
+    } else if (global.room > 2026 && global.room <= 2042) {
+        conv.close(`Enter the room to your left, and ${global.room} should be straight ahead, past the reception desk`);
+    } else {
+        conv.close(`Enter the room to your left, and ${global.room} should be straight ahead, past the reception desk, and a short
+        walk down the hallway`);
     }
 });
 
