@@ -1,6 +1,7 @@
 const functions = require('firebase-functions');
 const { dialogflow } = require('actions-on-google');
 
+// DISCLAIMER: created pathways/branches are stored in Google's Dialogflow interface
 const app = dialogflow();
 
 // global variable to store desired room throughout destination
