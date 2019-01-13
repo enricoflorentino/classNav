@@ -4,13 +4,13 @@ const { dialogflow } = require('actions-on-google');
 const app = dialogflow();
 
 // global variable to store desired room throughout destination
-global.temp = 1000;
+global.room = 1000;
 
 app.intent('startRoute', (conv, {number}) => {
 
     // number arg is the desired room #
 
-    global.temp = number;
+    global.room = number;
     if (number/1000 < 2) {
         // first floor
         if (number == 1012) {
@@ -24,7 +24,9 @@ app.intent('startRoute', (conv, {number}) => {
 });
 
 
-app.intent('firstFloorRooms', conv  => {
-    conv.close(`Congrats! ${global.temp}`);
+app.intent('firstFloorRooms', conv => {
+    if (global.room == 1013) {
+        conv.close(``)
+    }
 });
 exports.mybackend = functions.https.onRequest(app);
