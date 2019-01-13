@@ -6,15 +6,15 @@ const app = dialogflow();
 // global variable to store desired room throughout destination
 global.room = 1000;
 
-app.intent('startRoute', (conv, {floor1}) => {
+app.intent('startRoute', (conv, {number}) => {
 
-    // floor1 arg is the desired room #
+    // number arg is the desired room #
 
-    global.room = floor1;
-    if (floor1/1000 < 2) {
+    global.room = number;
+    if (number/1000 < 2) {
         // first floor
-        if (floor1 == 1012) {
-            conv.close(`Walk slightly to the right, room ${floor1} is up ahead.`);
+        if (number == 1012) {
+            conv.close(`Walk slightly to the right, room ${number} is up ahead.`);
         } else {
             conv.ask("Walk past the stairs that are ahead of you. Let me know when you're there.");    
         }
