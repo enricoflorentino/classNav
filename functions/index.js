@@ -100,4 +100,42 @@ app.intent(`secondFloorFollowUp2`, conv => {
     }
 });
 
+app.intent(`thirdFloor`, (conv, {number}) => {
+    global.room = number;
+    if (number/1000 >= 3 && number/1000 < 4) {
+        // third floor
+        conv.ask(`Ok! Walk past the stairs ahead of you and instead take the stairs beside the elevator to floor three.
+                    Let me know when you've done so.`)
+    } 
+});
+
+app.intent(`thirdFloorFollowUp`, conv => {
+    if (global.room == 3902) {
+        conv.close(`Room ${global.room} is to your left.`)
+    }
+    else if (global.room == 3901 || global.room == 3903) {
+        conv.close(`Follow the long hall on your right until you can shortly turn left. Room ${global.room} is on your right.`)
+    }
+    else if (global.room == 3002 || global.room == 3012) {
+        conv.close(`Follow the long hall on your right and keep going straight until you see Room ${global.room} on your left.`)
+    }
+    else if (global.room == 3014) {
+        conv.close(`Follow the long hall on your right and keep going straight until you see Room ${global.room} on your right.`)
+    }
+    else {
+        conv.ask(`Follow the long hall on your right and turn right to another long hall.`)
+    }
+    
+});
+
+app.intent(`thirdFloorFollowUp2`, conv => {
+    if (global.room % 2 == 1) {
+        conv.close(`Keep continuing until you see Room ${global.room} on your right.`)
+    }
+    else {
+        conv.close(`Keep continuing until you see Room ${global.room} on your left.`)
+    }
+});
+
+
 exports.mybackend = functions.https.onRequest(app);
