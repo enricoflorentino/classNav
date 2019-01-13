@@ -1,6 +1,7 @@
 const functions = require('firebase-functions');
 const { dialogflow } = require('actions-on-google');
 
+// DISCLAIMER: code below shows responses based on Dialogflow's branches/pathways
 const app = dialogflow();
 
 // global variable to store desired room throughout destination
@@ -85,12 +86,10 @@ app.intent(`secondFloor`, (conv, {number}) => {
 });
 
 app.intent(`secondFloorFollowUp`, conv => {
-    global.room = number;
     conv.close(`After the door, turn left then right and go straight down the hallway. Let me know when you've done so.`)
 });
 
 app.intent(`secondFloorFollowUp2`, conv => {
-    global.room = number;
     if (global.room == 2062 || global.room == 2066) {
         conv.close(`Near the end of the hall past the high tables on your left, take the last right to a hallway. Room
         ${global.room} is to your close right.`)
