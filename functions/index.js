@@ -33,8 +33,7 @@ app.intent(`startRoute5`, conv => {
 app.intent('zerothFloor', (conv, {number}) => {
     global.room = number;
     if (number < 1000) {
-        conv.ask(`Walk straight down the stairs in front of you leading to the lower level, proceed for two flights. Let me
-        know when you've reach the bottom.`);
+        conv.ask(`Walk straight down the stairs in front of you leading to the lower level, proceed for two flights. Let me know when you've reach the bottom.`);
     }
 });
 
@@ -134,8 +133,7 @@ app.intent(`secondFloorFollowUp2`, conv => {
     } else if (global.room > 2026 && global.room <= 2042) {
         conv.close(`Enter the room to your left, and ${global.room} should be straight ahead, past the reception desk`);
     } else {
-        conv.close(`Enter the room to your left, and ${global.room} should be straight ahead, past the reception desk, and a short
-        walk down the hallway`);
+        conv.close(`Enter the room to your left, and ${global.room} should be straight ahead, past the reception desk, and a short walk down the hallway`);
     }
 });
 
@@ -143,8 +141,7 @@ app.intent(`thirdFloor`, (conv, {number}) => {
     global.room = number;
     if (number/1000 >= 3 && number/1000 < 4) {
         // third floor
-        conv.ask(`Ok! Walk past the stairs ahead of you and instead take the stairs beside the elevator to floor three.
-                    Let me know when you've done so.`)
+        conv.ask(`Ok! Walk past the stairs ahead of you and instead take the stairs beside the elevator to floor three. Let me know when you've done so.`)
     } 
 });
 
@@ -180,8 +177,7 @@ app.intent(`fourthFloor`, (conv, {number}) => {
     global.room = number;
     if (number/1000 >= 4 && number/1000 < 5) {
         // fourth floor
-        conv.ask(`Ok! Walk past the stairs ahead of you and instead take the stairs beside the elevator to floor four.
-                    Let me know when you've done so.`)
+        conv.ask(`Ok! Walk past the stairs ahead of you and instead take the stairs beside the elevator to floor four. Let me know when you've done so.`)
     } 
 });
 
