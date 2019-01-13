@@ -34,7 +34,7 @@ app.intent(`startRoute5`, conv => {
 
 app.intent('zerothFloor', (conv, {number}) => {
     global.room = number;
-    else if (number < 1000) {
+    if (number < 1000) {
         conv.ask(`Walk straight down the stairs in front of you leading to the lower level, proceed for two flights. Let me know when you've reach the bottom.`);
     }
 });
