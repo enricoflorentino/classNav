@@ -26,7 +26,13 @@ app.intent('startRoute', (conv, {number}) => {
 
 app.intent('firstFloorRooms', conv => {
     if (global.room == 1013) {
-        conv.close(``)
+        conv.close(`Room ${global.room} is to your right before the slight turn in the hall.`)
+    }
+    else if (global.room > 1900) {
+        conv.close(`Keep going straight until you can only go right. Room ${global.room} is to your right.`)
+    }
+    else {
+        conv.ask(`Take the first right after passing the stairs. Let me know when you've done so.`)
     }
 });
 exports.mybackend = functions.https.onRequest(app);
