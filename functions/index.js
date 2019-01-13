@@ -24,7 +24,7 @@ app.intent('startRoute', (conv, {number}) => {
 });
 
 
-app.intent('firstFloorRooms', conv => {
+app.intent('firstFloor', conv => {
     if (global.room == 1013) {
         conv.close(`Room ${global.room} is to your right before the slight turn in the hall.`)
     }
@@ -39,7 +39,7 @@ app.intent('firstFloorRooms', conv => {
     }
 });
 
-app.intent('FFRooms', conv => {
+app.intent('firstFloorFollowUp', conv => {
     if (global.room == 1829 || global.room == 1907) {
         conv.close(`Walk all the way to the end of the hall. Room ${global.room} is to your left.`)
     }
