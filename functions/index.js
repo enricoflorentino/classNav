@@ -11,6 +11,7 @@ app.intent('startRoute0', conv => {
     conv.ask('Ok! Your class is in the basement, tell me your exact room number');
 })
 app.intent('startRoute1', conv => {
+    
      conv.ask(`Ok! Your class is on floor 1, tell me your exact room number.`)
 });
 
@@ -205,6 +206,26 @@ app.intent(`fourthFloorFollowUp2`, conv => {
     }
     else {
         conv.close(`Keep continuing until you see Room ${global.room} on your left.`)
+    }
+});
+
+app.intent(`fifthFloor`, (conv, {number}) => {
+    global.room = number;
+    if (number/1000 >= 5 && number/1000 < 6) {
+        // fourth floor
+        conv.ask(`Ok! Walk past the stairs ahead of you and instead take the stairs beside the elevator to floor five. Let me know when you've done so.`)
+    } 
+});
+
+app.intent(`fifthFloorFollowUp`, conv => {
+    if (global.room >= 5901 && global.room <= 5903) {
+        conv.close(`Room ${global.room} is to your left.`)
+    }
+    else if (global.room == 5908) {
+        conv.close(`Room ${global.room} is to your right.`)
+    }
+    else {
+        conv.close(`Follow down the hall, Room ${global.room} will be on the right side.`)
     }
 });
 
