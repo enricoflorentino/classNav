@@ -39,9 +39,24 @@ app.intent('firstFloorRooms', conv => {
     }
 });
 
-app.intent('finalFirstFloor', conv => {
-    if (global.room == 1829) {
+app.intent('finalFloorRooms - custom', conv => {
+    if (global.room == 1829 || global.room == 1907) {
         conv.close(`Walk all the way to the end of the hall. Room ${global.room} is to your left.`)
+    }
+    else if (global.room == 1908) {
+        conv.close(`Walk all the way to the end of the hall. Room ${global.room} is to your right.`)
+    }
+    else if (global.room == 1019) {
+        conv.close(`Room ${global.room} is on your left side.`)
+    }
+    else if (global.room == 1024 ) {
+        conv.close(`Take the left after the end of the hall. Room ${global.room} is to your left.`)
+    }
+    else if (global.room % 2 == 1) {
+        conv.close(`Take the left after the end of the hall. Room ${global.room} is to your left after the door.`)
+    }
+    else {
+        conv.close(`Take the left after the end of the hall. Room ${global.room} is to your right after the door.`)
     }
 })
 exports.mybackend = functions.https.onRequest(app);
