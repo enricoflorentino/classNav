@@ -6,15 +6,7 @@ const app = dialogflow();
 
 // global variable to store desired room throughout destination
 global.room = 1000;
-
-//
-global.validRooms = [10, 20, 32, 34, 36, 40, 50, 60, 64,
-                     1012, 1013, 1019, 1025, 1023, 1024, 1028, 1029, 1032, 1036, 1037, 1042, 1901, 1902, 1903, 1829, 1907,
-                     2902, 2903, 2002, 2066, 2062, 2058, 2056, 2054, 2052, 2048, 2046, 2044, 2042, 2038, 2036, 2034, 2031, 2032, 2026, 2024, 2018,
-                     3902, 3002, 3012,  3014, 3018, 3019, 3028, 3029, 3036, 3038, 3039, 3100, 3046, 3048,
-                     4048, 4046, 4042, 4038, 4036, 4028, 4018, 4009, 4003, 4009, 4008, 4903,4902, 4019, 4029,
-                     5911, 5908, 5909, 5902, 5903, 5901, 5012, 5014, 5018, 5002] ;
-                     
+                   
 
 app.intent('startRoute0', conv => {
     conv.ask('Ok! Your class is in the basement, tell me your exact room number');
@@ -42,9 +34,6 @@ app.intent(`startRoute5`, conv => {
 
 app.intent('zerothFloor', (conv, {number}) => {
     global.room = number;
-    if (!global.validRooms.includes(number)) {
-        conv.close('This is not a valid room in the building, please specify another room.');
-    }
     else if (number < 1000) {
         conv.ask(`Walk straight down the stairs in front of you leading to the lower level, proceed for two flights. Let me know when you've reach the bottom.`);
     }
