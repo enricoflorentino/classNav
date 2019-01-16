@@ -122,12 +122,10 @@ app.intent(`secondFloorFollowUp`, conv => {
 
 app.intent(`secondFloorFollowUp2`, conv => {
     if (global.room == 2062 || global.room == 2066) {
-        conv.close(`Near the end of the hall past the high tables on your left, take the last right to a hallway. Room
-        ${global.room} is to your close right.`)
+        conv.close(`Near the end of the hall past the high tables on your left, take the last right to a hallway. Room ${global.room} is to your close right.`)
     }
     else if (global.room == 2058 || global.room == 2002) {
-        conv.close(`Near the end of the hall past the high tables on your left, take the last right to a hallway. Room
-        ${global.room} is to your close left.`)
+        conv.close(`Near the end of the hall past the high tables on your left, take the last right to a hallway. Room ${global.room} is to your close left.`)
     } else if (global.room == 2031) {
         conv.close(`${global.room} is just to your left.`);
     } else if (global.room >= 2018 && global.room <= 2026) {
