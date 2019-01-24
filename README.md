@@ -4,3 +4,5 @@
 Google Assistant App that guides you right to your desired classroom, even in the craziest of buildings.
 
 Winner of 'Best Use of Google Cloud Platform' at StarterHacks.
+
+Devpost can be found [here](https://devpost.com/software/classnav-oktf0u).
